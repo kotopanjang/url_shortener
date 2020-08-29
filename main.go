@@ -1,8 +1,8 @@
 package main
 
 import (
-	"aqilliz_assesment/helper"
-	"aqilliz_assesment/routes"
+	"github.com/kotopanjang/aqilliz_assesment/helper"
+	"github.com/kotopanjang/aqilliz_assesment/routes"
 	"fmt"
 	"os"
 )

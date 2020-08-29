@@ -7,6 +7,6 @@ WORKDIR /app
 COPY . .
 
 RUN go mod tidy
-RUN go build -o aqilliz_app
+RUN go build -o url_shortener
 
-ENTRYPOINT [ "./aqilliz_app" ]
+ENTRYPOINT [ "./url_shortener" ]

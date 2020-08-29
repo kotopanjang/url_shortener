@@ -1,0 +1,8 @@
+Checking Database Connection ... 
+Connected!
+Starting App on port  3112
+Checking existing URL
+google.com  not found on the database or expired
+Inserting data to database
+Generating Random String ...
+Data Inserted. Doc ID  &{ObjectID("5f4a9669334123863fa09be0")}

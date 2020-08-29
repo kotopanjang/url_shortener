@@ -5,7 +5,7 @@ import (
 	"errors"
 	"time"
 
-	"aqilliz_assesment/helper"
+	"github.com/kotopanjang/aqilliz_assesment/helper"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"

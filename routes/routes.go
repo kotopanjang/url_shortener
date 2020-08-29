@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"aqilliz_assesment/controllers"
+	"github.com/kotopanjang/aqilliz_assesment/controllers"
 
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"

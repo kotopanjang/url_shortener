@@ -1,12 +1,14 @@
 package controllers
 
 import (
-	"aqilliz_assesment/models"
 	"net/http"
+
+	"github.com/kotopanjang/aqilliz_assesment/models"
 
 	"github.com/gin-gonic/gin"
 )
 
+// This function is to handle register handler
 func Register(c *gin.Context) {
 	// Get raw query. behind the ? sign
 	host := c.Request.Host
