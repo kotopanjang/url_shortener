@@ -3,8 +3,12 @@
 	You observed that 80% of the transactions are requests for 3 shortened identifier. 
 	Please propose what will you change in the system that will optimise the performance
 
->What I will change on the system is,
-when the users request for an identifier, we will check on the database whether the data is already stored on the database or not. if yes, we will use that data insted of creating new record. It will minimize the database size.
+>
+Changes will be on the server and system
+1. Server
+	- We will enable caching on the server. So if the the same url is accessed manny times, it will store in the cache and access the cache without access the database.
+2. System
+	- We will check on the database whether the data is already stored on the database or not. if yes, we will use that data insted of creating new record. It will minimize the database size.
 
 #
 
