@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  mongo-docker:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    networks:
+      - my_network
+
+  service-url-shortener:
+    build: ./aqilliz_assesment/
+    ports:
+      - 4444:4444
+    environment:
+      - appport=4444
+      - dbhost=mongo-docker
+      - dbport=27017
+      - db=testing_aqilliz
+    networks:
+      - my_network
+
+networks:
+    my_network:
