@@ -25,6 +25,6 @@
 	components interact with one another if you were to deploy it on AWS or GCP.
 	
 >Here is the diagram example how it works with cache
->https://drive.google.com/file/d/1tZmyc7pkgtLTrMtJm6r-X0rbeJxM7bd7/view?usp=sharing
->https://drive.google.com/file/d/1v4vfV96Rf26C1EPH_ApRLW6M04yMBrd9/view?usp=sharing
->https://drive.google.com/file/d/11-Kxob8TiWVTStP_ShSq_lCjojzcEvyh/view?usp=sharing
+	https://drive.google.com/file/d/1tZmyc7pkgtLTrMtJm6r-X0rbeJxM7bd7/view?usp=sharing
+	https://drive.google.com/file/d/1v4vfV96Rf26C1EPH_ApRLW6M04yMBrd9/view?usp=sharing
+	https://drive.google.com/file/d/11-Kxob8TiWVTStP_ShSq_lCjojzcEvyh/view?usp=sharing
