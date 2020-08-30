@@ -12,7 +12,7 @@ when the users request for an identifier, we will check on the database whether 
 	Korean users are complaining that the latency is too long. What would you do?
 
 >1. Enable caching on the client browser
-	- Because it will be faster if we load from cache insted of accessing resource from server everytime. And yes it wil be slow at the first time open the app, but it will be faster after the browser get the cache.
+	- Because it will be faster if we load from cache insted of accessing resource from server and database everytime. And yes it wil be slow at the first time open the app, but it will be faster after the browser get the cache.
 >2. Clustering server
 	- If its related to server and database, then clustering will help.
 >3. Add some more servers in the biggest traffic region
