@@ -21,17 +21,46 @@ Get all the source code with go get.
 
 ## Running without Docker File
 Before you run the api, make sure your mongodb is already set up. If not, you can open terminal and use this command.
-> mongod --dbpath /data/db
+```
+mongod --dbpath /data/db
+```
 
-After setup the database, now its time to setup the api. First you need to build the api with this command.
-> go build -o url_shortener
+After setup the database, now its time to setup the api. First you need to go to "url_shortener" folder and build the project with this command.
+```
+go build -o url_shortener
+```
 
 Then you can run the api with environtment variable above.
-> ./url_shortener appport=2020 dbhost=localhost dbport=27017 db=url_shortener 
+```
+./url_shortener appport=2020 dbhost=localhost dbport=27017 db=url_shortener 
+```
+
+And now your api will run
 
 ## Running with Docker File
-Inside "url_shortener" folder  you will find **Dockerfile** that already configured. But before you run the api, you need to run the mongodb in your docker first.
->
+Inside "url_shortener" folder you will find file **Dockerfile** that already configured. But before you run the api, you need to run mongodb in your docker container with the same network.
 
+First you need to create docker network
+```
+docker network create my_network
+```
 
-#### Running with Docker Container
+Now get mongodb docker image
+```
+docker pull mongo:latest
+```
+
+After you get the mongodb docker image, now you can run it on the container and expose the port. 
+Also run under the same network  
+```
+docker run --name mongo-docker -p 27017:27017 --network my_network mongo:latest
+```
+
+Run the api
+```
+docker run -it -e appport=2020 -e dbhost=mongo-docker -e dbport=27017 -e db=testing_aqilliz --network my_network -p 2020:2020 url_shortener
+```
+
+Now your api is running on the docker
+
+## Running with Docker Container
