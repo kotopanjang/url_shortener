@@ -5,6 +5,7 @@ URL Shortener is an api to allow user to convert their full-length url into a sh
 # Requirement
 - Golang >= 1.12
 - Mongodb
+- Docker (Optional)
 
 # Environtment Variable
 - appport (Port for running api)
@@ -13,6 +14,10 @@ URL Shortener is an api to allow user to convert their full-length url into a sh
 - db (Database Name)
 - dbuser (Database Username) *#Optional*
 - dbpass (Database Password) *#Optional*
+
+# API
+There are 3 APIs to access
+
 
 # Installation
 Get all the source code with go get.
@@ -34,8 +39,6 @@ Then you can run the api with environtment variable above.
 ```
 ./url_shortener appport=2020 dbhost=localhost dbport=27017 db=url_shortener 
 ```
-
-And now your api will run
 
 ## Running with Docker File
 Inside "url_shortener" folder you will find file **Dockerfile** that already configured. But before you run the api, you need to run mongodb in your docker container with the same network.
@@ -61,6 +64,13 @@ Run the api
 docker run -it -e appport=2020 -e dbhost=mongo-docker -e dbport=27017 -e db=testing_aqilliz --network my_network -p 2020:2020 url_shortener
 ```
 
-Now your api is running on the docker
-
-## Running with Docker Container
+## Running with Docker Compose
+On the root folder, you will find docker-compose.yml that already configured.
+Build docker compose
+```
+docker-compose build
+```
+Run docker compose
+```
+docker-compose up
+```
