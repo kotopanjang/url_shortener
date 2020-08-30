@@ -11,6 +11,9 @@ func ConnectDB() (*mongo.Database, error) {
 	config := ReadConfig()
 
 	clientOptions := options.Client().ApplyURI("mongodb://" + config["host"])
+	if config["password"] != "" && config["username"] != "" {
+		clientOptions = options.Client().ApplyURI("mongodb://" + config["host"] + ":" + config["password"] + "@" + config["username"])
+	}
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {

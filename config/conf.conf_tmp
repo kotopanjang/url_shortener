@@ -1,0 +1,4 @@
+host=mongo-docker:27017
+database=url_shortener
+username=
+password=

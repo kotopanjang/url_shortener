@@ -1,25 +1,18 @@
 package helper
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"time"
 )
 
 var (
 	outfile, _ = os.Create(wd + "server.log")
-	WriteLog   = log.New(outfile, "", 0)
+	WriteLog   = log.New(outfile, time.Now().String()+" > ", 0)
 )
 
-// func init() {
-// 	// set location of log file
-// 	var logpath = wd + "log/server.log"
-
-// 	flag.Parse()
-// 	var file, err1 = os.Create(logpath)
-
-// 	if err1 != nil {
-// 		panic(err1)
-// 	}
-// 	Log = log.New(file, "", log.LstdFlags|log.Lshortfile)
-// 	Log.Println("LogFile : " + logpath)
-// }
+func Println(s ...interface{}) {
+	WriteLog.Println(s...)
+	fmt.Println(s...)
+}

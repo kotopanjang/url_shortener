@@ -17,10 +17,10 @@ func (e *ShortURL) TableName() string {
 }
 
 func (su *ShortURL) Insert() (*ShortURL, error) {
-	helper.WriteLog.Println("Inserting data to database")
+	helper.Println("Inserting data to database")
 	db, err := helper.ConnectDB()
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return nil, err
 	}
 
@@ -33,14 +33,14 @@ func (su *ShortURL) Insert() (*ShortURL, error) {
 
 	res, err := collection.InsertOne(context.TODO(), su)
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return nil, err
 	}
-	helper.WriteLog.Println("Data Inserted. Doc ID ", res)
+	helper.Println("Data Inserted. Doc ID ", res)
 
 	err = collection.Database().Client().Disconnect(context.TODO())
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return nil, err
 	}
 
@@ -48,7 +48,7 @@ func (su *ShortURL) Insert() (*ShortURL, error) {
 }
 
 func (su *ShortURL) GetRandomStr() (string, error) {
-	helper.WriteLog.Println("Generating Random String ...")
+	helper.Println("Generating Random String ...")
 	ListMaskedUrl := []string{}
 	//prepare 25 set random str in case of the high load. and prevent from multiple checking on database
 	for i := 0; i < 25; i++ {
@@ -78,24 +78,24 @@ func (su *ShortURL) GetRandomStr() (string, error) {
 	}
 	db, err := helper.ConnectDB()
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return "", nil
 	}
 	collection := db.Collection(su.TableName())
 	showInfoCursor, err := collection.Aggregate(context.TODO(), mongo.Pipeline{match, group})
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return "", nil
 	}
 	err = collection.Database().Client().Disconnect(context.TODO())
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return "", err
 	}
 
 	var showsWithInfo []bson.M
 	if err = showInfoCursor.All(context.TODO(), &showsWithInfo); err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return "", nil
 	}
 
@@ -109,11 +109,11 @@ func (su *ShortURL) GetRandomStr() (string, error) {
 
 	finalRes := helper.StringDiff(ListMaskedUrl, exist)
 	if len(finalRes) < 0 {
-		helper.WriteLog.Println("Random String conflict with the others")
-		helper.WriteLog.Println("Re-Generating random string ...")
+		helper.Println("Random String conflict with the others")
+		helper.Println("Re-Generating random string ...")
 		final, err := su.GetRandomStr()
 		if err != nil {
-			helper.WriteLog.Println(err)
+			helper.Println(err)
 			return "", nil
 		} else {
 			return final, nil
@@ -125,10 +125,10 @@ func (su *ShortURL) GetRandomStr() (string, error) {
 }
 
 func (su *ShortURL) CheckExistingData() *ShortURL {
-	helper.WriteLog.Println("Checking existing URL")
+	helper.Println("Checking existing URL")
 	db, err := helper.ConnectDB()
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return nil
 	}
 
@@ -138,30 +138,30 @@ func (su *ShortURL) CheckExistingData() *ShortURL {
 
 	ss := []ShortURL{}
 	if err = res.All(context.TODO(), &ss); err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return nil
 	}
 	err = collection.Database().Client().Disconnect(context.TODO())
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return nil
 	}
 
 	if len(ss) > 0 {
-		helper.WriteLog.Println("URL ", su.OriginalUrl, " found on database")
-		helper.WriteLog.Println("Retrieving data from database")
+		helper.Println("URL ", su.OriginalUrl, " found on database")
+		helper.Println("Retrieving data from database")
 		return &ss[0]
 	} else {
-		helper.WriteLog.Println(su.OriginalUrl, " not found on the database or expired")
+		helper.Println(su.OriginalUrl, " not found on the database or expired")
 		return nil
 	}
 }
 
 func (su *ShortURL) Retrieve(param string) (string, error) {
-	helper.WriteLog.Println("Retrieving Original URL from database...")
+	helper.Println("Retrieving Original URL from database...")
 	db, err := helper.ConnectDB()
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return "", err
 	}
 	collection := db.Collection(su.TableName())
@@ -170,21 +170,21 @@ func (su *ShortURL) Retrieve(param string) (string, error) {
 
 	ss := []ShortURL{}
 	if err = res.All(context.TODO(), &ss); err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return "", err
 	}
 
 	err = collection.Database().Client().Disconnect(context.TODO())
 	if err != nil {
-		helper.WriteLog.Println(err)
+		helper.Println(err)
 		return "", err
 	}
 
 	if len(ss) > 0 {
-		helper.WriteLog.Println("Short URL found on database")
+		helper.Println("Short URL found on database")
 		return ss[0].OriginalUrl, nil
 	} else {
-		helper.WriteLog.Println("Short URL not found on the database or expired")
+		helper.Println("Short URL not found on the database or expired")
 		return "", errors.New("Invalid url")
 	}
 }

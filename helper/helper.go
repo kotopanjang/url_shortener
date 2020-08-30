@@ -24,6 +24,28 @@ func Deserialize(str string, res interface{}) error {
 	return err
 }
 
+func WriteConfig(hostdb, portdb, userdb, passdb, database string) error {
+	f, err := os.Create(wd + "config/conf.conf")
+
+	if err != nil {
+		log.Fatal(err)
+		return err
+	}
+	defer f.Close()
+
+	_, err = f.Write([]byte("host=" + hostdb + ":" + portdb))
+	_, err = f.Write([]byte("\ndatabase=" + database))
+	_, err = f.Write([]byte("\nusername=" + userdb))
+	_, err = f.Write([]byte("\npassword=" + passdb))
+
+	if err != nil {
+		log.Fatal(err)
+		return err
+	}
+
+	return nil
+}
+
 func ReadConfig() map[string]string {
 	ret := make(map[string]string)
 	file, err := os.Open(wd + "config/conf.conf")
