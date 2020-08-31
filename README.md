@@ -6,7 +6,7 @@ This API projects comes with environment variable to make it easier to deploy ev
 # Requirement
 - Golang >= 1.12
 - Mongodb
-- Docker (Optional)
+- Docker
 
 # Environtment Variable
 - appport (Port for running api)
