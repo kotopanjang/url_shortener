@@ -11,9 +11,9 @@ services:
   service-url-shortener:
     build: ./url_shortener/
     ports:
-      - 4444:4444
+      - 8000:8000
     environment:
-      - appport=4444
+      - appport=8000
       - dbhost=mongo-docker
       - dbport=27017
       - db=testing_aqilliz

@@ -1,13 +1,4 @@
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Starting App on port  4444
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Checking Database Connection ... 
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Connected!
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > App Started on port  4444
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Retrieving Original URL from database...
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Short URL not found on the database or expired
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Checking existing URL
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > jojo.com  not found on the database or expired
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Inserting data to database
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Generating Random String ...
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Data Inserted. Doc ID  &{ObjectID("5f4b4f3919f390a9c1c0c3af")}
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Retrieving Original URL from database...
-2020-08-30 14:02:38.142539 +0700 WIB m=+0.005008634 > Short URL found on database
+2020-08-31 08:47:35.286774 +0700 WIB m=+0.005700127 > Starting App on port  2020
+2020-08-31 08:47:35.286774 +0700 WIB m=+0.005700127 > Checking Database Connection ... 
+2020-08-31 08:47:35.286774 +0700 WIB m=+0.005700127 > Connected!
+2020-08-31 08:47:35.286774 +0700 WIB m=+0.005700127 > App Started on port  2020
