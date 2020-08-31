@@ -1,7 +1,7 @@
 # URL Shortener
 
 URL Shortener is an api to allow user to convert their full-length URL into a short URL, convert back into their original URL also redirect to the Original URL.
-This API projects comes with environment variable to make it easier to deploy everywhere.
+This API projects comes with environment variable to make it easier to deploy everywhere. This API using GIN as the framework from golang.
 
 # Requirement
 - Golang >= 1.12
