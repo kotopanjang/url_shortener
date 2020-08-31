@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/kotopanjang/aqilliz_assesment/helper"
-	"github.com/kotopanjang/aqilliz_assesment/routes"
+	"github.com/kotopanjang/url_shortener/helper"
+	"github.com/kotopanjang/url_shortener/routes"
 )
 
 var (

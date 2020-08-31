@@ -34,27 +34,7 @@ func CheckDatabaseConnection() error {
 	}
 	WriteLog.Println("Connected!")
 
-	err = stats.Client().Disconnect(context.TODO())
-	if err != nil {
-		WriteLog.Println(err)
-		return err
-	}
+	defer stats.Client().Disconnect(context.TODO())
 
 	return nil
 }
-
-// func InsertData(param models.ShortURL) error {
-// 	config := ReadConfig()
-// 	client, err := ConnectDB()
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-
-// 	collection := client.Database(config["database"]).Collection(param.TableName())
-// 	res, err := collection.InsertOne(context.TODO(), param)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// 	fmt.Println("Inserted Document", res)
-// 	return err
-// }

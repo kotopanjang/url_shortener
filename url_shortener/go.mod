@@ -1,4 +1,4 @@
-module github.com/kotopanjang/aqilliz_assesment
+module github.com/kotopanjang/url_shortener
 
 go 1.12
 

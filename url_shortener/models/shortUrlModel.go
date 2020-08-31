@@ -5,7 +5,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/kotopanjang/aqilliz_assesment/helper"
+	"github.com/kotopanjang/url_shortener/helper"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -38,11 +38,7 @@ func (su *ShortURL) Insert() (*ShortURL, error) {
 	}
 	helper.Println("Data Inserted. Doc ID ", res)
 
-	err = collection.Database().Client().Disconnect(context.TODO())
-	if err != nil {
-		helper.Println(err)
-		return nil, err
-	}
+	defer collection.Database().Client().Disconnect(context.TODO())
 
 	return su, nil
 }
@@ -87,11 +83,7 @@ func (su *ShortURL) GetRandomStr() (string, error) {
 		helper.Println(err)
 		return "", nil
 	}
-	err = collection.Database().Client().Disconnect(context.TODO())
-	if err != nil {
-		helper.Println(err)
-		return "", err
-	}
+	defer collection.Database().Client().Disconnect(context.TODO())
 
 	var showsWithInfo []bson.M
 	if err = showInfoCursor.All(context.TODO(), &showsWithInfo); err != nil {
@@ -141,11 +133,7 @@ func (su *ShortURL) CheckExistingData() *ShortURL {
 		helper.Println(err)
 		return nil
 	}
-	err = collection.Database().Client().Disconnect(context.TODO())
-	if err != nil {
-		helper.Println(err)
-		return nil
-	}
+	defer collection.Database().Client().Disconnect(context.TODO())
 
 	if len(ss) > 0 {
 		helper.Println("URL ", su.OriginalUrl, " found on database")
@@ -174,11 +162,7 @@ func (su *ShortURL) Retrieve(param string) (string, error) {
 		return "", err
 	}
 
-	err = collection.Database().Client().Disconnect(context.TODO())
-	if err != nil {
-		helper.Println(err)
-		return "", err
-	}
+	defer collection.Database().Client().Disconnect(context.TODO())
 
 	if len(ss) > 0 {
 		helper.Println("Short URL found on database")

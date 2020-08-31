@@ -2,8 +2,10 @@ package controllers
 
 import (
 	"net/http"
+	"strings"
 
-	"github.com/kotopanjang/aqilliz_assesment/models"
+	"github.com/kotopanjang/url_shortener/helper"
+	"github.com/kotopanjang/url_shortener/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,6 +15,8 @@ func Register(c *gin.Context) {
 	// Get raw query. behind the ? sign
 	host := c.Request.Host
 	oriUrl := c.Request.URL.RawQuery
+	// if strings.
+
 	short := models.ShortURL{}
 	short.OriginalUrl = oriUrl
 
@@ -43,6 +47,7 @@ func Register(c *gin.Context) {
 	}
 }
 
+// This function is to handle Retrieve handler
 func Retrieve(c *gin.Context) {
 	// Get raw query. behind the ? sign
 	query := c.Request.URL.RawQuery
@@ -63,11 +68,13 @@ func Retrieve(c *gin.Context) {
 	}
 }
 
+// This function is to handle Redirect handler
 func Redirect(c *gin.Context) {
 	// Get raw query. behind the ? sign
 	query := c.Request.URL.RawQuery
 	short := models.ShortURL{}
 	res, err := short.Retrieve(query)
+	helper.Println("NGAGNNUUUUUUU")
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"data":    "",
@@ -75,6 +82,11 @@ func Redirect(c *gin.Context) {
 			"message": err.Error(),
 		})
 	} else {
-		c.Redirect(301, res)
+		helper.Println("Prefix >> ", !strings.HasPrefix(res, "http"))
+		if !strings.HasPrefix(res, "http") {
+			c.Redirect(301, res)
+		} else {
+			c.Redirect(301, "http://www."+res)
+		}
 	}
 }
