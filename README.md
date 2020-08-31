@@ -64,7 +64,7 @@ To avoid the duplicate active short URL stored in database, it will prepare 25 S
 Result
 ```
 {
-  data: "localhost:4444/retrieve?enmjv4Ly",
+  data: "localhost:8000/retrieve?enmjv4Ly",
   error: false,
   message: null
 }
@@ -120,7 +120,7 @@ go build -o url_shortener
 
 Then you can run the api with environtment variable above.
 ```
-./url_shortener appport=4444 dbhost=localhost dbport=27017 db=url_shortener 
+./url_shortener appport=8000 dbhost=localhost dbport=27017 db=url_shortener 
 ```
 
 ## Running with Docker File
@@ -144,7 +144,7 @@ docker run --name mongo-docker -p 27017:27017 --network my_network mongo:latest
 
 Dockerize the api under the same network
 ```
-docker run -it -e appport=4444 -e dbhost=mongo-docker -e dbport=27017 -e db=testing_aqilliz --network my_network -p 4444:4444 url_shortener
+docker run -it -e appport=8000 -e dbhost=mongo-docker -e dbport=27017 -e db=testing_aqilliz --network my_network -p 8000:8000 url_shortener
 ```
 
 ## Running with Docker Compose
