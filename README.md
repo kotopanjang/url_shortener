@@ -1,7 +1,7 @@
 # URL Shortener
 
-URL Shortener is an api to allow user to convert their full-length URl into a short link. And also convert back into their original URL.
-It comes with environment variable to make it easier to deploy everywhere.
+URL Shortener is an api to allow user to convert their full-length URL into a short URL, convert back into their original URL also redirect to the Original URL.
+This API projects comes with environment variable to make it easier to deploy everywhere.
 
 # Requirement
 - Golang >= 1.12
@@ -17,10 +17,10 @@ It comes with environment variable to make it easier to deploy everywhere.
 - dbpass (Database Password) *#Optional*
 
 # API
-There are 3 APIs to access `register`, `retrieve`, `redirect`.
+There are 3 APIs to access `register`, `retrieve` and `redirect`.
 
 #### Register
-To register long URl and return json data with details of short URl
+To register long URL and return json data with details of short URL
 ```
 /register?{long url}
 ```
@@ -28,7 +28,7 @@ example:
 ![register](https://github.com/kotopanjang/url_shortener/blob/master/resources/register%201.png)
 
 #### Retrieve
-Acecss your short URl and return json data with details of oiginal/long URl
+Acecss your short URL and return json data with details of oiginal/long URL
 ```
 /retrieve?{short url}
 ```
@@ -37,7 +37,7 @@ example:
 
 
 #### Redirect
-Acecss your short URl and redirrect to original/long URl
+Acecss your short URL and redirrect to original/long URL
 ```
 /redirect?{short url}
 ```
@@ -52,15 +52,28 @@ example:
 #### Register
 When someone register the long URL, it will check to database wether the long URL is already registered on the database or not. And also checking the expired time. As default it will expired in 1 day.
 If the long URL is found and not expired, it will take that data and return it.
-If the long URl is not found or expired, it will insert new data with expired 1 day.
+If the long URL is not found or expired, it will insert new data with expired 1 day.
 To avoid the duplicate random string, it will prepare 25 random string and do the checking on the database.
+Result
 ```
-when the api
+{
+  data: "localhost:4444/retrieve?enmjv4Ly",
+  error: false,
+  message: null
+}
 ```
 
 #### Retrieve
-It willl check on the database wether the short URl is expired or not. If expired, it will return json invalild URl. And if the data is not expired then it will show the full URl in data section.
-`Invalid URL`
+It willl check on the database wether the short URL is expired or not. If expired, it will return json invalild URL. And if the data is not expired then it will show the full URL in data section.
+Result Success
+```
+{
+  data: "https://www.google.com/search?q=aqilliz&oq=aqill&aqs=chrome.0.69i59j46j69i57j0l2j69i60l3.1720j0j7&sourceid=chrome&ie=UTF-8",
+  error: false,
+  message: null
+}
+```
+Result Invalid URL
 ```
 {
   data: "",
@@ -70,8 +83,8 @@ It willl check on the database wether the short URl is expired or not. If expire
 ```
 
 #### Redirect
-The flow between `retrieve` and `redirect` is the same. But in `redirect`, it will redirect to full URL directy. If the URL is invallid, it will return invalid url json
-`Invalid URL`
+The flow between `retrieve` and `redirect` is the same. But in `redirect`, it will redirect to full URL directy. If the URL is invallid, it will return invalid URL json
+Result Invalid URL
 ```
 {
   data: "",
