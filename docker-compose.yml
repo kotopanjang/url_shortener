@@ -9,7 +9,7 @@ services:
       - my_network
 
   service-url-shortener:
-    build: ./aqilliz_assesment/
+    build: ./url_shortener/
     ports:
       - 4444:4444
     environment:
