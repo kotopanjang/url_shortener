@@ -120,7 +120,7 @@ go build -o url_shortener
 
 Then you can run the api with environtment variable above.
 ```
-./url_shortener appport=8000 dbhost=localhost dbport=27017 db=url_shortener 
+appport=8000 dbhost=localhost dbport=27017 db=url_shortener ./url_shortener 
 ```
 
 ## Running with Docker File
