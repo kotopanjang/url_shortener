@@ -17,8 +17,12 @@ This API projects comes with environment variable to make it easier to deploy ev
 - dbpass (Database Password) *#Optional*
 
 # API
-There are 3 APIs to access `register`, `retrieve` and `redirect`.
-
+There are 3 APIs to access:
+```
+/register?{long url}
+/retrieve?{short url}
+/redirect?{short url}
+```
 #### Register
 To register long URL and return json data with details of short URL
 ```
@@ -28,7 +32,7 @@ example:
 ![register](https://github.com/kotopanjang/url_shortener/blob/master/resources/register%201.png)
 
 #### Retrieve
-Acecss your short URL and return json data with details of oiginal/long URL
+Access short URL and return json data with details of oiginal/long URL
 ```
 /retrieve?{short url}
 ```
@@ -37,7 +41,7 @@ example:
 
 
 #### Redirect
-Acecss your short URL and redirrect to original/long URL
+Access short URL and redirrect to original/long URL
 ```
 /redirect?{short url}
 ```
@@ -55,7 +59,7 @@ When you hit the url
 When someone register the long URL, it will check to database wether the long URL is already registered on the database or not. And also checking the expired time. As default it will expired in 1 day.
 If the long URL is found and not expired, it will take that data and return it.
 If the long URL is not found or expired, it will insert new data with expired 1 day.
-To avoid the duplicate random string, it will prepare 25 random string and do the checking on the database.
+To avoid the duplicate active short URL stored in database, it will prepare 25 Short URL and do the checking on the database.
 
 Result
 ```
