@@ -1,6 +1,7 @@
 # URL Shortener
 
 URL Shortener is an api to allow user to convert their full-length url into a short link. And also convert back into their original URL.
+It comes with environment variable to make it easier to deploy everywhere.
 
 # Requirement
 - Golang >= 1.12
@@ -16,7 +17,28 @@ URL Shortener is an api to allow user to convert their full-length url into a sh
 - dbpass (Database Password) *#Optional*
 
 # API
-There are 3 APIs to access
+There are 3 APIs to access `register`, `retrieve`, `redirect`.
+
+#### Register
+To register long url and return json data with details of short url
+```
+/register?{long url}
+```
+example:
+
+#### Retrieve
+Acecss your short url and return json data with details of oiginal/long url
+```
+/retrieve?{short url}
+```
+example:
+
+#### Redirect
+Acecss your short url and redirrect to original/long url
+```
+/redirect?{short url}
+```
+example:
 
 
 # Installation
@@ -59,7 +81,7 @@ Also run under the same network
 docker run --name mongo-docker -p 27017:27017 --network my_network mongo:latest
 ```
 
-Run the api
+Dockerize the api under the same network
 ```
 docker run -it -e appport=2020 -e dbhost=mongo-docker -e dbport=27017 -e db=testing_aqilliz --network my_network -p 2020:2020 url_shortener
 ```
