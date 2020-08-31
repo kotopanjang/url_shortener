@@ -1,6 +1,6 @@
 # URL Shortener
 
-URL Shortener is an api to allow user to convert their full-length url into a short link. And also convert back into their original URL.
+URL Shortener is an api to allow user to convert their full-length URl into a short link. And also convert back into their original URL.
 It comes with environment variable to make it easier to deploy everywhere.
 
 # Requirement
@@ -20,7 +20,7 @@ It comes with environment variable to make it easier to deploy everywhere.
 There are 3 APIs to access `register`, `retrieve`, `redirect`.
 
 #### Register
-To register long url and return json data with details of short url
+To register long URl and return json data with details of short URl
 ```
 /register?{long url}
 ```
@@ -28,7 +28,7 @@ example:
 ![register](https://github.com/kotopanjang/url_shortener/blob/master/resources/register%201.png)
 
 #### Retrieve
-Acecss your short url and return json data with details of oiginal/long url
+Acecss your short URl and return json data with details of oiginal/long URl
 ```
 /retrieve?{short url}
 ```
@@ -37,7 +37,7 @@ example:
 
 
 #### Redirect
-Acecss your short url and redirrect to original/long url
+Acecss your short URl and redirrect to original/long URl
 ```
 /redirect?{short url}
 ```
@@ -47,6 +47,38 @@ example:
 `when you hit the url`
 
 ![redirect 2](https://github.com/kotopanjang/url_shortener/blob/master/resources/redirect%20result%201.png)
+
+# How It Works?
+#### Register
+When someone register the long URL, it will check to database wether the long URL is already registered on the database or not. And also checking the expired time. As default it will expired in 1 day.
+If the long URL is found and not expired, it will take that data and return it.
+If the long URl is not found or expired, it will insert new data with expired 1 day.
+To avoid the duplicate random string, it will prepare 25 random string and do the checking on the database.
+```
+when the api
+```
+
+#### Retrieve
+It willl check on the database wether the short URl is expired or not. If expired, it will return json invalild URl. And if the data is not expired then it will show the full URl in data section.
+`Invalid URL`
+```
+{
+  data: "",
+  error: true,
+  message: "Invalid url"
+}
+```
+
+#### Redirect
+The flow between `retrieve` and `redirect` is the same. But in `redirect`, it will redirect to full URL directy. If the URL is invallid, it will return invalid url json
+`Invalid URL`
+```
+{
+  data: "",
+  error: true,
+  message: "Invalid url"
+}
+```
 
 # Installation
 Get all the source code with go get.
