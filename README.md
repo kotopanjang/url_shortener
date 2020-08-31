@@ -25,6 +25,7 @@ To register long url and return json data with details of short url
 /register?{long url}
 ```
 example:
+![register](https://github.com/kotopanjang/url_shortener/blob/master/resources/register%201.png)
 
 #### Retrieve
 Acecss your short url and return json data with details of oiginal/long url
@@ -32,6 +33,8 @@ Acecss your short url and return json data with details of oiginal/long url
 /retrieve?{short url}
 ```
 example:
+![retrieve](https://github.com/kotopanjang/url_shortener/blob/master/resources/retrieve%201.png)
+
 
 #### Redirect
 Acecss your short url and redirrect to original/long url
@@ -39,7 +42,11 @@ Acecss your short url and redirrect to original/long url
 /redirect?{short url}
 ```
 example:
+![redirect 1](https://github.com/kotopanjang/url_shortener/blob/master/resources/redirect%201.png)
 
+`when you hit the url`
+
+![redirect 2](https://github.com/kotopanjang/url_shortener/blob/master/resources/redirect%20result%201.png)
 
 # Installation
 Get all the source code with go get.
