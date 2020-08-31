@@ -44,7 +44,9 @@ Acecss your short URL and redirrect to original/long URL
 example:
 ![redirect 1](https://github.com/kotopanjang/url_shortener/blob/master/resources/redirect%201.png)
 
-`when you hit the url`
+
+When you hit the url
+
 
 ![redirect 2](https://github.com/kotopanjang/url_shortener/blob/master/resources/redirect%20result%201.png)
 
@@ -54,6 +56,7 @@ When someone register the long URL, it will check to database wether the long UR
 If the long URL is found and not expired, it will take that data and return it.
 If the long URL is not found or expired, it will insert new data with expired 1 day.
 To avoid the duplicate random string, it will prepare 25 random string and do the checking on the database.
+
 Result
 ```
 {
@@ -65,6 +68,7 @@ Result
 
 #### Retrieve
 It willl check on the database wether the short URL is expired or not. If expired, it will return json invalild URL. And if the data is not expired then it will show the full URL in data section.
+
 Result Success
 ```
 {
@@ -84,6 +88,7 @@ Result Invalid URL
 
 #### Redirect
 The flow between `retrieve` and `redirect` is the same. But in `redirect`, it will redirect to full URL directy. If the URL is invallid, it will return invalid URL json
+
 Result Invalid URL
 ```
 {
